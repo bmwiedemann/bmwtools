@@ -1,0 +1,12 @@
+#!/usr/bin/python3
+# more secure against https://en.wikipedia.org/wiki/Rainbow_table attacks than MD5
+# avoids leaking plain passwords to sites (and their hackers)
+import bcrypt
+import sys
+
+p=sys.argv[1].encode('utf-8')
+h=bcrypt.hashpw(b'qJXy%8q'+p, b'$2a$14$s8Y3vNQ1c2w4SsXL63psGe')
+
+if isinstance(h, bytes):
+    h=h.decode('utf-8')
+print(h[29:])
